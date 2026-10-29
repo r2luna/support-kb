@@ -40,7 +40,8 @@ stay broken after it ships.
   booking-v3. This is a different bug, with a different fix.
 - **`one-day`**: the date moves by one day, not by a swap. Different zones see different days,
   and some months only (the desk's `oneDayMove` notes). This looks like a time zone or DST bug.
-  #4471's cause table footnoted these reports under the parser.
+  The desk files these reports under the parser by tenant and counts them there. They have a ticket
+  of their own as well.
 
 ## How the reports were counted
 
@@ -48,7 +49,8 @@ stay broken after it ships.
 2. Each report was placed by its tenant's locale and booking form and by its channel
    (`causes.ts`), not by intake's tag. The tag is a guess from the browser, and the
    "intake tag differs" column shows how often that guess is wrong.
-3. Reports in the desk's `oneDayMove` notes were taken out as their own problem.
+3. Reports in the desk's `oneDayMove` notes stay counted where they are filed, and they also have
+   their own row and ticket.
 
 ## Since April
 
