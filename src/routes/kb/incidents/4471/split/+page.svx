@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · three problems, not one'
+title: '#4471 · two problems, not one'
 owner: Rafael Lunardelli
 status: open
 reviewed: 2026-10-29
@@ -15,11 +15,11 @@ signature: Rafael Lunardelli
 </script>
 
 [#4471](/kb/incidents/4471) was merged as one issue: the parser reads dates month first. The
-reports in it describe three problems. Each now has a ticket of its own, with its count.
+reports in it describe two problems. Each now has a ticket of its own, with its count.
 
 <Callout kind="warn">
-The queued parser fix closes only the first row. The booking-v3 hint and the one-day shift
-stay broken after it ships.
+The queued parser fix closes only the first row. The booking-v3 hint stays broken after it
+ships.
 </Callout>
 
 ## The split
@@ -29,7 +29,6 @@ stay broken after it ships.
   issues={{
     parser: 'https://github.com/r2luna/support-kb/issues/1',
     hint: 'https://github.com/r2luna/support-kb/issues/2',
-    'one-day': 'https://github.com/r2luna/support-kb/issues/3',
   }}
 />
 
@@ -38,10 +37,8 @@ stay broken after it ships.
 - **`hint`**: booking-v3 prints `MM/DD/YYYY` under its date field. People type what it says, and
   the form reads the date day first. These reports come only through the form, at tenants on
   booking-v3. This is a different bug, with a different fix.
-- **`one-day`**: the date moves by one day, not by a swap. Different zones see different days,
-  and some months only (the desk's `oneDayMove` notes). This looks like a time zone or DST bug.
-  The desk files these reports under the parser by tenant and counts them there. They have a ticket
-  of their own as well.
+- A few `parser` reports read as a one-day move (the desk's `oneDayMove` notes). The desk files
+  them by tenant, so they are counted under `parser` and footnoted there.
 
 ## How the reports were counted
 
@@ -49,8 +46,7 @@ stay broken after it ships.
 2. Each report was placed by its tenant's locale and booking form and by its channel
    (`causes.ts`), not by intake's tag. The tag is a guess from the browser, and the
    "intake tag differs" column shows how often that guess is wrong.
-3. Reports in the desk's `oneDayMove` notes stay counted where they are filed, and they also have
-   their own row and ticket.
+3. Reports in the desk's `oneDayMove` notes stay counted where they are filed.
 
 ## Since April
 
@@ -59,6 +55,5 @@ stay broken after it ships.
 ## Lessons
 
 - A subject line says how a report feels, not what broke. Read the body, the tenant, and the way in.
-- A footnote under the wrong cause hides a problem. If it doesn't fit the cause, it gets a ticket.
 
 <RenderStamp {signature} />

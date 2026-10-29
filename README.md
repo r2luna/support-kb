@@ -39,4 +39,4 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 
 - Page source: `src/routes/kb/incidents/4471/split/+page.svx` (numbers from `src/lib/kb/ProblemSplit.svelte`)
 - Page as the desk sees it: `rendered/kb/incidents/4471/split.html` (built with `npm install && npm run build`)
-- Tickets: #1 parser (379 reports, 5 of them one-day moves), #2 booking-v3 hint (33), #3 one-day shift (5)
+- Tickets: #1 parser (379 reports, 5 of them read as one-day moves), #2 booking-v3 hint (33). #3 closed as a duplicate of #1.
