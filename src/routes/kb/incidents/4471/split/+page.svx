@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · two problems, not one'
 owner: Rafael Lunardelli
-status: open
+status: closed
 reviewed: 2026-10-29
 signature: Rafael Lunardelli
 ---
@@ -17,9 +17,9 @@ signature: Rafael Lunardelli
 [#4471](/kb/incidents/4471) was merged as one issue: the parser reads dates month first. The
 reports in it describe two problems. Each now has a ticket of its own, with its count.
 
-<Callout kind="warn">
-The queued parser fix closes only the first row. The booking-v3 hint stays broken after it
-ships.
+<Callout>
+Closed 5 October. `parser`: fixed (fix(dates): parse dd/mm for eu locales). `hint`: won't fix,
+because the booking-v3 form is retired.
 </Callout>
 
 ## The split
