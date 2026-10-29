@@ -1,0 +1,62 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: Rafael Lunardelli
+status: open
+reviewed: 2026-10-29
+signature: Rafael Lunardelli
+---
+
+<script>
+  import ProblemSplit from '#lib/kb/ProblemSplit.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one issue: the parser reads dates month first. The
+reports in it describe three problems. Each now has a ticket of its own, with its count.
+
+<Callout kind="warn">
+The queued parser fix closes only the first row. The booking-v3 hint and the one-day shift
+stay broken after it ships.
+</Callout>
+
+## The split
+
+<ProblemSplit
+  ticket={4471}
+  issues={{
+    parser: 'https://github.com/r2luna/support-kb/issues/1',
+    hint: 'https://github.com/r2luna/support-kb/issues/2',
+    'one-day': 'https://github.com/r2luna/support-kb/issues/3',
+  }}
+/>
+
+- **`parser`**: the shared parser reads month first, and every tenant here writes the day first.
+  Day and month swap. Reports come from every channel except the booking-v3 form.
+- **`hint`**: booking-v3 prints `MM/DD/YYYY` under its date field. People type what it says, and
+  the form reads the date day first. These reports come only through the form, at tenants on
+  booking-v3. This is a different bug, with a different fix.
+- **`one-day`**: the date moves by one day, not by a swap. Different zones see different days,
+  and some months only (the desk's `oneDayMove` notes). This looks like a time zone or DST bug.
+  #4471's cause table footnoted these reports under the parser.
+
+## How the reports were counted
+
+1. The export pages overlap, so rows were de-duplicated by report id.
+2. Each report was placed by its tenant's locale and booking form and by its channel
+   (`causes.ts`), not by intake's tag. The tag is a guess from the browser, and the
+   "intake tag differs" column shows how often that guess is wrong.
+3. Reports in the desk's `oneDayMove` notes were taken out as their own problem.
+
+## Since April
+
+<QueueTimeline ticket={4471} />
+
+## Lessons
+
+- A subject line says how a report feels, not what broke. Read the body, the tenant, and the way in.
+- A footnote under the wrong cause hides a problem. If it doesn't fit the cause, it gets a ticket.
+
+<RenderStamp {signature} />
