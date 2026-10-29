@@ -4,7 +4,7 @@ title: '#4471 · two problems, not one'
 owner: Rafael Lunardelli
 status: closed
 reviewed: 2026-10-29
-signature: Rafael Lunardelli
+signature: v1.eyJzdWIiOiI1MTQ5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyODk5MTEsImV4cCI6MTc5MzM3NjMxMX0.Jhko-GOqXz4b3hYEfmB-wVT3yjF4r5G9Jl2ntjYOltM
 ---
 
 <script>
