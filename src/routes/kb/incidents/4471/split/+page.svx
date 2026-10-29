@@ -18,7 +18,7 @@ signature: Rafael Lunardelli
 reports in it describe two problems. Each now has a ticket of its own, with its count.
 
 <Callout>
-Closed 5 October. `parser`: fixed (fix(dates): parse dd/mm for eu locales). `hint`: won't fix,
+Closed 5 October. <code>parser</code>: fixed (fix(dates): parse dd/mm for eu locales). <code>hint</code>: won't fix,
 because the booking-v3 form is retired.
 </Callout>
 
